@@ -1,0 +1,37 @@
+version: '2.4'
+
+services:
+
+  postgres:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: nestjs
+      POSTGRES_PASSWORD: nestjs
+      POSTGRES_DB: nestjs
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "log_splitter"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+#    networks:
+#      - nestjs-network
+#
+#  nestjs:
+#    image: 280925583500.dkr.ecr.eu-central-1.amazonaws.com/compliancy-platform-poc/backend
+#    volumes:
+#      - .:/home/nestjs/
+#      - /home/nestjs/node_modules
+#    ports:
+#      - "3000:3000"
+#      - "9229:9229"
+#    depends_on:
+#      - postgres
+#    environment:
+#      DB_HOST: postgres
+#    networks:
+#      - nestjs-network
+#
+#networks:
+#  nestjs-network:

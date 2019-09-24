@@ -1,0 +1,70 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="border-bottom: 1px solid #275277"><h1 class="menu">Menu</h1></mat-toolbar>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let operator of operators" [value]="operator">{{operator.name}}</mat-option>
+    </mat-autocomplete>
+    <mat-form-field *ngIf="loggedIn" style="margin-left: 10px; margin-top: 13px">
+      <mat-select #selectOperator (selectionChange)="onSelectionChange(selectOperator.value)"
+                  placeholder="Select operator" value="All">
+        <mat-option *ngFor="let operator of operators" [value]="operator">
+          {{operator.code}} | {{operator.name}} ({{operator.users.length}})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-nav-list>
+      <a mat-list-item routerLink="home">Home</a>
+      <ng-container *ngIf="loggedIn">
+        <a *ngIf="false" mat-list-item routerLink="chemicals">Chemicals</a>
+        <a mat-list-item routerLink="operators">Operators</a>
+        <a mat-list-item routerLink="users">Users</a>
+        <a mat-list-item routerLink="drag-and-drop">Drag and drop</a>
+        <a mat-list-item routerLink="infinite-scrolling">Infinite scrolling</a>
+        <mat-divider></mat-divider>
+      </ng-container>
+      <a mat-list-item routerLink="about">Over COIN</a>
+      <a mat-list-item routerLink="/">Diensten</a>
+      <a mat-list-item routerLink="/">Contact</a>
+      <ng-container *ngIf="loggedIn">
+        <mat-divider></mat-divider>
+        <a mat-list-item (click)="onLogout()">Logout</a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar" style="padding-top:10px;height:124px">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div fxFlex fxLayout fxLayoutGap="20px" fxLayoutAlign="start center">
+        <img src="assets/images/logo.png"/>
+        <h1><strong>My Amazing POC Angular</strong></h1>
+      </div>
+      <div fxFlex fxLayout fxLayoutGap="20px" fxLayoutAlign="center center">
+        <span class="user-stuff" *ngIf="loggedIn">{{user.role}}</span>
+      </div>
+      <div fxFlex fxLayout fxLayoutGap="20px" fxLayoutAlign="end center space-around">
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+          <li><a routerLink="about">Over COIN</a></li>
+          <li><a routerLink="/">Diensten</a></li>
+          <li><a routerLink="/">Contact</a></li>
+          <li *ngIf="!loggedIn">
+            <mat-icon>lock</mat-icon>
+          </li>
+          <li *ngIf="loggedIn">
+            <mat-icon>person</mat-icon>
+            {{user.name}}</li>
+        </ul>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

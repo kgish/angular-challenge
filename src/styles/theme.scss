@@ -1,0 +1,113 @@
+@import "../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import '../../node_modules/@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($mat-indigo);
+$app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-theme);
+
+// Define a custom typography config that overrides the font-family
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, monospace',
+  $display-4:     mat-typography-level(112px, 112px, 300),
+  $display-3:     mat-typography-level(56px, 56px, 400),
+  $display-2:     mat-typography-level(45px, 48px, 400),
+  $display-1:     mat-typography-level(34px, 40px, 400),
+  $headline:      mat-typography-level(24px, 32px, 400),
+  $title:         mat-typography-level(20px, 32px, 500),
+  $subheading-2:  mat-typography-level(16px, 28px, 400),
+  $subheading-1:  mat-typography-level(15px, 24px, 400),
+  $body-2:        mat-typography-level(14px, 24px, 500),
+  $body-1:        mat-typography-level(14px, 20px, 400),
+  $caption:       mat-typography-level(12px, 20px, 400),
+  $button:        mat-typography-level(14px, 14px, 500),
+  // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(inherit, 1.125, 400)
+);
+
+//$coin-orange: (
+// 50 : #fef2e3,
+// 100 : #fbdeb8,
+// 200 : #f9c989,
+// 300 : #f7b35a,
+// 400 : #f5a236,
+// 500 : #f39213,
+// 600 : #f18a11,
+// 700 : #ef7f0e,
+// 800 : #ed750b,
+// 900 : #ea6306,
+// A100 : #ffffff,
+// A200 : #ffeadf,
+// A400 : #ffc9ac,
+// A700 : #ffb992,
+// contrast: (
+//   50 : #000000,
+//   100 : #000000,
+//   200 : #000000,
+//   300 : #000000,
+//   400 : #000000,
+//   500 : #000000,
+//   600 : #000000,
+//   700 : #000000,
+//   800 : #000000,
+//   900 : #000000,
+//   A100 : #000000,
+//   A200 : #000000,
+//   A400 : #000000,
+//   A700 : #000000,
+// )
+//);
+//
+//$coin-blue: (
+// 50 : #e0ebef,
+// 100 : #b3ccd7,
+// 200 : #80abbd,
+// 300 : #4d89a2,
+// 400 : #266f8e,
+// 500 : #00567a,
+// 600 : #004f72,
+// 700 : #004567,
+// 800 : #003c5d,
+// 900 : #002b4a,
+// A100 : #7ebeff,
+// A200 : #4ba5ff,
+// A400 : #188bff,
+// A700 : #007ffd,
+// contrast: (
+//   50 : #000000,
+//   100 : #000000,
+//   200 : #000000,
+//   300 : #ffffff,
+//   400 : #ffffff,
+//   500 : #ffffff,
+//   600 : #ffffff,
+//   700 : #ffffff,
+//   800 : #ffffff,
+//   900 : #ffffff,
+//   A100 : #000000,
+//   A200 : #000000,
+//   A400 : #ffffff,
+//   A700 : #ffffff,
+// )
+//);
+//
+//$app-primary: mat-palette($coin-orange);
+//$app-accent:  mat-palette($coin-blue);

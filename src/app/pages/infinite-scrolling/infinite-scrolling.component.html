@@ -1,0 +1,10 @@
+<ng-container *ngIf="infinite | async as operators">
+
+  <cdk-virtual-scroll-viewport itemSize="20" (scrolledIndexChange)="nextBatch($event, (operators[operators.length - 1].name))">
+
+    <li *cdkVirtualFor="let operator of operators; let i = index; trackBy: trackByIdx" class="animated lightSpeedIn">
+      <p> {{ operator.code}} || {{operator.name}}</p>
+    </li>
+
+  </cdk-virtual-scroll-viewport>
+</ng-container>

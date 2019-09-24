@@ -1,0 +1,82 @@
+<ng-container *ngIf="operator">
+  <h2>{{operator.code}} | {{operator.name}}</h2>
+
+  <ng-container *ngIf="users">
+    <mat-form-field>
+      <mat-select #selectUser (selectionChange)="onSelectionChange(selectUser.value)"
+                  placeholder="Select user" [value]="user">
+        <mat-option *ngFor="let u of users" [value]="u">
+          {{u.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-tab-group>
+      <mat-tab label="Information">
+        <ng-container *ngTemplateOutlet="info"></ng-container>
+      </mat-tab>
+      <mat-tab label="Compliancy status">
+        <ng-container *ngTemplateOutlet="compliancy"></ng-container>
+      </mat-tab>
+      <mat-tab label="Test Configuration">
+        <ng-container *ngTemplateOutlet="test"></ng-container>
+      </mat-tab>
+      <mat-tab label="Logging">
+        <ng-container *ngTemplateOutlet="logging"></ng-container>
+      </mat-tab>
+    </mat-tab-group>
+
+    <ng-template #info>
+      <p><img style="height:100px" [src]="avatar"/></p>
+      <p><strong>Id</strong>: {{user.id}}</p>
+      <p><strong>Username</strong>: {{user.username}}</p>
+      <p><strong>Name</strong>: {{user.name}}</p>
+      <p><strong>Role</strong>: {{user.role}}</p>
+    </ng-template>
+
+    <ng-template #compliancy>
+      <div fxLayoutAlign="start center">
+        <p font-size="20px">
+          <mat-icon style="color:green">check_circle</mat-icon>
+          All tests passed. Congratulations!
+        </p>
+      </div>
+    </ng-template>
+
+    <ng-template #test>
+      <p>
+        Lots of cool test configuration stuff goes here.
+      </p>
+    </ng-template>
+
+    <ng-template #logging>
+
+      <div fxLayoutAlign="start center">
+        <mat-form-field fxFlex="50%">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search logs">
+        </mat-form-field>
+      </div>
+
+      <section class="mat-elevation-z8">
+
+        <table width="100%" mat-table [dataSource]="dataSource" matSort>
+
+          <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</th>
+            <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow()"></tr>
+        </table>
+
+        <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                       showFirstLastButtons></mat-paginator>
+      </section>
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="!users">No users</ng-container>
+
+</ng-container>
+
+<mat-spinner *ngIf="!operator"></mat-spinner>

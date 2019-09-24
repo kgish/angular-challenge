@@ -1,0 +1,32 @@
+<section fxLayoutAlign="center">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field>
+          <input
+            type="email"
+            matInput
+            placeholder="Email"
+            formControlName="email">
+          <mat-error>{{getInputError('email')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password">
+          <mat-error>{{getInputError('password')}}</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions fxLayoutAlign="center">
+        <button class="btn-coin" type="submit" mat-raised-button [disabled]="loginForm.invalid">
+          Submit
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>
