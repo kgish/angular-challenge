@@ -5,12 +5,12 @@ export class LinkUsersToOperators1546021613530 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     const users = await queryRunner.query('SELECT * from "user"');
-    const coin = await queryRunner.query('SELECT * FROM "operator" where "code" = $1', ['COIN']);
-    const admin = await queryRunner.query('SELECT * from "user" where "username" = $1', ['admin@coin.nl']);
-    const support = await queryRunner.query('SELECT * from "user" where "username" = $1', ['support@coin.nl']);
+    const company = await queryRunner.query('SELECT * FROM "operator" where "code" = $1', ['COMPANY']);
+    const admin = await queryRunner.query('SELECT * from "user" where "username" = $1', ['admin@company.nl']);
+    const support = await queryRunner.query('SELECT * from "user" where "username" = $1', ['support@company.nl']);
 
-    await queryRunner.query('UPDATE "user" SET "operatorId" = $2 WHERE "id" = $1', [admin.id, coin[0].id]);
-    await queryRunner.query('UPDATE "user" SET "operatorId" = $2 WHERE "id" = $1', [support.id, coin[0].id]);
+    await queryRunner.query('UPDATE "user" SET "operatorId" = $2 WHERE "id" = $1', [admin.id, company[0].id]);
+    await queryRunner.query('UPDATE "user" SET "operatorId" = $2 WHERE "id" = $1', [support.id, company[0].id]);
 
     users.forEach(async user => {
       // Select a random operator

@@ -6,11 +6,11 @@ import {hash} from 'bcryptjs';
 export class InsertUserTable1546019806360 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
-    let username = 'admin@coin.nl';
+    let username = 'admin@example.ore';
     let name = 'Bender Rodriguez';
     let password = await hash('admin', 10);
     await queryRunner.query(`INSERT INTO "user" (username, name, password, role) VALUES ($1, $2, $3, $4)`, [username, name, password, 'admin']);
-    username = 'support@coin.nl';
+    username = 'support@example.org';
     name = 'Philip J. Fry';
     password = await hash('support', 10);
     await queryRunner.query(`INSERT INTO "user" (username, name, password, role) VALUES ($1, $2, $3, $4)`, [username, name, password, 'support']);

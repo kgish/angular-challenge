@@ -6,7 +6,7 @@ export class InsertOperatorTable1545995165894 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.query('DELETE FROM "operator"');
-    await queryRunner.query(`INSERT INTO "operator" (code, name) VALUES ($1, $2)`, ['COIN', 'Vereniging COIN']);
+    await queryRunner.query(`INSERT INTO "operator" (code, name) VALUES ($1, $2)`, ['COMPANY', 'COMPANY']);
     Operators.forEach((operator: IOperator) => {
       operator.contract.forEach(async contract => {
         await queryRunner.query(`INSERT INTO "operator" (code, name) VALUES ($1, $2)`, [contract, operator.name]);

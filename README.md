@@ -611,7 +611,7 @@ If you looked closely at the response, you will see that each operator element a
     "users": [
       {
         "id": "8c754253-a5d2-4e32-9b43-55917e56724f",
-        "username": "admin@coin.nl",
+        "username": "admin@example.org",
         "name": "Bender Rodriguez",
         "role": "admin"
       },
@@ -1096,7 +1096,7 @@ export class AuthService {
 }
 ```
 
-Login with valid credentials `admin@coin.nl/admin` and inspect the console output.
+Login with valid credentials `admin@example.org/admin` and inspect the console output.
 
 Now login with invalid credentials and see what happens.
 
@@ -1482,9 +1482,9 @@ and import it from the `styles.scss` file
 
 Play around with the color macros and palettes and observe the changes.
 
-### COIN look-and-feel (optional)
+### Look and feel (optional)
 
-As an extra optional excercise, use the above information about themes, see if you can re-create the COIN look-and-feel by reading the [COIN House Style Guide](documents/COIN-Huisstijlhandboek.pdf)
+As an extra optional excercise, use the above information about themes, see if you can re-create the COMPANY look-and-feel by reading the COMPANY house stule guide.
  
 based on the following:
 
@@ -1497,7 +1497,7 @@ logo:      src/assets/images/logo.png
 favicon:   src/assets/images/favicon.png
 ```
 
-For example, place the logo in the toolbar and see if you can mimic the styling on the http://coin.nl home page.
+For example, place the logo in the toolbar and see if you can mimic the styling on the COMPANY home page.
 
 
 ## About page
@@ -1775,10 +1775,4 @@ If you're interested in learning more about how the server was built:
 
 ## Authors
 
-This how-to guide has been brought to you by:
-
-```
-Devops Team
-Vereniging COIN (c) 2019
-14 January 2019
-```
+Kiffin Gish

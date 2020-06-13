@@ -43,7 +43,7 @@ $custom-typography: mat-typography-config(
   $input:         mat-typography-level(inherit, 1.125, 400)
 );
 
-//$coin-orange: (
+//$company-orange: (
 // 50 : #fef2e3,
 // 100 : #fbdeb8,
 // 200 : #f9c989,
@@ -76,7 +76,7 @@ $custom-typography: mat-typography-config(
 // )
 //);
 //
-//$coin-blue: (
+//$company-blue: (
 // 50 : #e0ebef,
 // 100 : #b3ccd7,
 // 200 : #80abbd,
@@ -109,5 +109,5 @@ $custom-typography: mat-typography-config(
 // )
 //);
 //
-//$app-primary: mat-palette($coin-orange);
-//$app-accent:  mat-palette($coin-blue);
+//$app-primary: mat-palette($company-orange);
+//$app-accent:  mat-palette($company-blue);
